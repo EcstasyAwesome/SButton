@@ -10,6 +10,8 @@ typedef enum {
 
 class SButton {
   private:
+    bool _state;
+    bool _digital;
     bool _pressed;
     uint8_t _pin;
 	uint8_t _debounce;
@@ -18,7 +20,9 @@ class SButton {
 	uint16_t _long;
     uint32_t _time;
   public:
-    SButton(const uint8_t pin, const uint16_t value, const uint16_t tm1 = 0, const uint8_t tm2 = 100);
+    SButton(const uint8_t pin, const uint16_t min, const uint16_t max, const uint16_t tm1, const uint8_t tm2);
+	SButton(const uint8_t pin, const bool state, const uint16_t tm1, const uint8_t tm2);
+	SButton(const uint8_t pin, const uint16_t tm1, const uint8_t tm2);
     SBUTTON_STATUS getStatus();
 };
 
